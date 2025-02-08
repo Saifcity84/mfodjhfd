@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Crypto Clicker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<style>
+    /* Notification Styles */
+#notificationContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.notification {
+  background-color: #4f4f4f;
+  color: #ffffff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;  min-width: 250px;
+  margin-bottom: 10px;
+}
+
+body {
+    padding-top: 0;
+    margin-top: 0;
+}
+.notification.success {
+  border-left: 5px solid #00ff88;
+}
+
+.notification.error {
+  border-left: 5px solid #ff4444;
+}
+
+.notification.fade-out {
+  animation: fadeOut 1s forwards;
+}
+/* Conteneur de la section Boost */
+.boost-section {
+    height: 65vh;
+
+    border-radius: 15px;
+    padding: 15px;
+    max-width: 100%;
+    margin: 10px auto;
+
+    text-align: center;
+    color: #ffffff;
+    font-family: "Inter", serif;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Title */
+.boost-section > h2 {
+    font-size: 2.4em;
+    color: #00ff88;
+    margin-bottom: 10px;
+    font-family: "Montserrat", serif;
+    text-shadow: 0 3px 6px #ffffff37;
+margin-top: 0;
+}
+
+/* Description text */
+.boost-section p {
+    font-size: 14px;
+    color: #cccccc;
+    margin-bottom: 15px;
+}
+
+/* Boost Options */
+.boost-options {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.boost-button {
+    background-color:#00ff88;
+    color: #ffffff;
+    text-shadow: 0 3px 6px #00130aad;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 120px;
+    margin: 5px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.boost-buttonActiv {
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    background-color: #8a8a8a;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 70vw;
+    margin: 5px;
+    text-shadow: 0 3px 8px #00130aad;
+
+}
+
+.boost-button:hover {
+    background-color: #00cc66;
+    transform: scale(1.05);
+}
+
+.boost-button:active {
+    background-color: #00ff88;
+}
+
+/* Payment Method Section */
+.payment-methods {
+    display: grid;
+    justify-content:center;
+    margin-bottom: 15px;
+
+}
+
+.method-button {
+    background-color: #444444;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 80px;
+    margin: 5px;
+}
+
+.method-button:hover {
+    background-color: #00cc66;
+    transform: scale(1.05);
+}
+
+.method-button:active {
+    background-color: #00ff88;
+}
+.container{
+    margin-bottom: 25px;
+}
+/* Notification Styles */
+#notificationContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.notification {
+  background-color: #4f4f4f;
+  color: #ffffff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;  min-width: 250px;
+  margin-bottom: 10px;
+}
+
+.notification.success {
+  border-left: 5px solid #00ff88;
+}
+
+.notification.error {
+  border-left: 5px solid #ff4444;
+}
+
+.notification.fade-out {
+  animation: fadeOut 1s forwards;
+}
+/* Wallet Address */
+.wallet-address p {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.wallet-text {
+    font-weight: bold;
+    color: #00cc66;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Copy Address Button */
+#copyAddressButton {
+    background-color: #555555;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-shadow: 0 3px 2px #00130a5e;
+
+}
+
+#copyAddressButton:hover {
+    background-color: #00cc66;
+}
+
+/* Boost Activation Button */
+.activate-button {
+    background-color: #00cc66;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.activate-button:hover {
+    background-color: #00ff88;
+    transform: scale(1.05);
+}
+
+/* Boost Timer */
+.boost-timer {
+    background-color: #333333;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-top: 15px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+/* Hidden Elements */
+.hidden {
+    display: none;
+}
+
+/* Timer Animation */
+#boostTimeLeft {
+    font-weight: bold;
+    color: #ff6600;
+}
+/* Style général du select */
+#paymentMethodSelect {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #1e2430; /* Couleur sombre pour un look professionnel */
+    color: #f0f4f8; /* Texte clair */
+    font-size: 16px;
+    padding: 12px 35px 12px 15px;
+    border-radius: 12px;
+    border: 2px solid #4f5a72; /* Légère bordure contrastée */
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    font-family: 'Roboto', sans-serif; /* Police moderne */
+}
+
+/* Effet de survol : bordure bleue */
+#paymentMethodSelect:hover {
+    border-color: #4fa3f7; /* Bleue pour le hover */
+    background-color: #2a3342; /* Changer la couleur de fond au survol */
+}
+
+/* Style de focus (lorsqu'on sélectionne) */
+#paymentMethodSelect:focus {
+    border-color: #4fa3f7;
+    outline: none;
+    background-color: #2a3342;
+}
+
+/* Flèche personnalisée */
+#paymentMethodSelect::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #f0f4f8;
+    pointer-events: none;
+}
+
+/* Ajout d'une animation pour la flèche */
+#paymentMethodSelect:hover::after {
+    color: #4fa3f7; /* Couleur de la flèche au survol */
+    transform: translateY(-50%) rotate(180deg); /* Rotation de la flèche */
+}
+
+/* Espace supplémentaire pour la flèche */
+#paymentMethodSelect {
+    padding-right: 45px;
+    position: relative;
+}
+
+/* Ombre légère pour un effet d'élévation */
+#paymentMethodSelect {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet 3D */
+}
+
+/* Transition subtile pour tous les effets */
+#paymentMethodSelect {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Styles pour l'option sélectionnée (optimisation) */
+#paymentMethodSelect option {
+    background-color: #2a3342;
+    color: #f0f4f8;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+}
+
+/* Animation de transition pour chaque option */
+#paymentMethodSelect option:hover {
+    background-color: #3d4759; /* Une légère variation de la couleur */
+}
+/* Container pour les avis */
+.boostAvisContainer {
+    border-radius: 10px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #2c2f38;
+    padding: 10px 0;
+}
+
+.boostAvis {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    animation: scrollAvis 30s linear infinite;
+}
+
+.avis {
+    background: #1a1e24;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 90px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.avis-id {
+    font-size: 0.9em;
+    color: #a4a7b0;
+}
+
+.avis-description {
+    font-size: 14px;
+    font-weight: bold;
+    color: #77f4b7;
+}
+
+.avis-type {
+    font-size: 13px;
+    color: #ffcc00;
+}
+
+.avis-time {
+    font-size: 12px;
+    color: #9fa6b2;
+}
+
+@keyframes scrollAvis {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+</style>
+<body>
+    <div class="container">
+        <!-- Boost Options -->
+        <div class="boostAvisContainer">
+            <div class="boostAvis"></div>
+          </div>
+                  <section id="boost" class="boost-section">
+            <h2>Boost Your Rewards!</h2>
+            <p>Select a boost option</p>
+
+            <div class="boost-options">
+                <button class="boost-button" id="boostX2" data-price="20">Boost X2</button>
+                <button class="boost-button" id="boostX4" data-price="30">Boost X4</button>
+                
+                
+            </div>
+            <div class="payment-methods">
+                <label for="paymentMethodSelect">Select Payment Method</label>
+                 <div class="payment-methods">
+                <select id="paymentMethodSelect">
+                    <option>SELECT</option>
+                    <option value="USDT">POL (POLYGON)</option>
+                    <option value="SOL">Solana (SOL)</option>
+                    <option value="BTC">BITCOIN (BTC)</option>
+                    <option value="SUI">SUI (SUI)</option>
+                </select>
+                
+            </div>
+            <button id="copyAddressButton" class="copy-button">📋 Copy Address</button>
+
+                
+            </div>
+            <p id="walletAddress" class="hidden"></p>
+            
+            
+            <div id="walletAddress" class="hidden"></div>
+            
+            <!-- Address Display -->
+            <div id="walletAddressContainer" class="wallet-address-container">
+                <p>Send your payment to this address:</p>
+
+            <!-- Activate Boost -->
+            <button id="activateBoostButton" class="boost-buttonActiv hidden">🚀 Activate Boost</button>
+
+            <!-- Boost Timer -->
+            <div id="boostTimer" class="boost-timer hidden">
+                <p>⏳ Boost Active! Time remaining: <span id="boostTimeLeft">60:00</span></p>
+            </div>
+        </div>
+        </section>
+<!-- MARKET -->
+<section class="market-section" id="marketSection">
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a></li>
+           <li><a href="boost.html" class="nav-link"  style="color: #00ff88;
+              text-shadow: 0 0 10px #00ff88;
+              transform: translateY(-3px);"><i class="fas fa-bolt"></i><span>Boost</span></a></li>
+
+            <li class="center-button">
+                <a href="modal1.html" class="trade-button"><i class="fas fa-exchange-alt"></i></a>
+            </li>
+            <li><a href="#profile" class="nav-link"><i class="fas fa-user"></i><span>Profile</span></a></li>
+            <li><a href="#settings" class="nav-link"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+        </ul>
+    </nav>  
+
+    <!-- Connect Wallet button -->            </div></section>
+        <!-- Notifications -->
+        <div id="notificationContainer"></div>
+    </div>
+
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            // Sélection des éléments du DOM
+            const boostButtons = document.querySelectorAll(".boost-button");
+            const paymentMethodSelect = document.getElementById("paymentMethodSelect");
+            const walletAddress = document.getElementById("walletAddress");
+            const copyButton = document.getElementById("copyAddressButton");
+            const activateBoostButton = document.getElementById("activateBoostButton");
+            const boostTimer = document.getElementById("boostTimer");
+            const boostTimeLeft = document.getElementById("boostTimeLeft");
+            const notificationContainer = document.getElementById("notificationContainer");
+            const boostAvisDiv = document.querySelector(".boostAvis");  // Ajout de la div des avis
+        
+            let selectedBoost = null; // Initialisation de l'option de boost
+            let isActionInProgress = false; // Empêcher les clics multiples
+        
+            // Adresses de paiement pour chaque méthode
+            const paymentAddresses = {
+                USDT: "0x50D318e71addBA2A8bc6E7958D962719BCD64fdf",
+                SOL: "9GUnKQdWeq93CXzSQYaECMzpdYyFW5YHjbrvLtEQ1Uk2",
+                BTC: "bc1qhrpz5f3j4f9cm7pks0h7sfl2ztzvsg9gtt6dgh",
+                SUI: "0x0f3a3afa424b754070dbd9bf3ee04171f5c510785ce208b1eaacc57a44b12727"
+            };
+        
+            // Gérer la sélection de la méthode de paiement
+            // Gérer la sélection de la méthode de paiement
+paymentMethodSelect.addEventListener("change", function () {
+    const selectedMethod = paymentMethodSelect.value; // Valeur de l'option sélectionnée
+    const address = paymentAddresses[selectedMethod];
+
+    if (address) {
+        walletAddress.textContent = address;
+        walletAddress.classList.remove("hidden");
+    } else {
+        walletAddress.textContent = "Select a method";
+        walletAddress.classList.add("hidden");
+    }
+}); // Fermeture de l'écouteur 'change'
+
+// Gérer la sélection de boost (X2 ou X4)
+boostButtons.forEach(button => {
+    button.addEventListener("click", function () {
+        if (isActionInProgress) return; // Ignorer si une action est en cours
+
+        // Réinitialiser la sélection des autres boutons de boost
+        boostButtons.forEach(b => b.classList.remove("selected"));
+        button.classList.add("selected");
+
+        selectedBoost = button.id; // X2 ou X4
+        const price = button.dataset.price;
+
+        // Affichage du prix du boost sélectionné
+        if (selectedBoost && price) {
+            activateBoostButton.textContent = `🚀 Activate Boost - ${selectedBoost.toUpperCase()} for ${price} USDT`;
+            activateBoostButton.classList.remove("hidden");
+        } else {
+            showNotification("⛔ Boost selection failed!", "error");
+        }
+    });
+}); // Fermeture de la boucle 'forEach' des boutons de boost
+
+// Activer le Boost
+activateBoostButton.addEventListener("click", function () {
+    if (isActionInProgress) return;
+
+    if (!selectedBoost) {
+        showNotification("⛔ Please select a Boost option!", "error");
+        return;
+    }
+
+    const selectedMethod = walletAddress.textContent;
+    if (selectedMethod === "Select a method") {
+        showNotification("⛔ Please select a valid payment method!", "error");
+        return;
+    }
+
+    const price = selectedBoost === 'boostX2' ? 20 : 30;
+    showNotification(`💳 Please confirm that you have sent ${price} USDT to this address.`, "info");
+    activateBoostButton.classList.add("hidden");
+    copyButton.classList.add("hidden");
+    isActionInProgress = true;
+
+    // Logique de confirmation de l'utilisateur (simulée ici)
+    const userConfirmed = true; // Vous pouvez ajuster cela selon votre logique
+    if (userConfirmed) {
+        startBoost();
+    }
+}); // Fermeture de l'écouteur 'click' pour le bouton d'activation du boost
+
+// Fonction pour démarrer le Boost (timer)
+function startBoost() {
+    boostTimer.classList.remove("hidden");
+    let minutes = 60;
+    let seconds = 0;
+    const boostInterval = setInterval(function () {
+        if (seconds === 0) {
+            if (minutes === 0) {
+                clearInterval(boostInterval);
+                boostTimer.classList.add("hidden");
+                showNotification("⏰ Boost expired!", "error");
+                isActionInProgress = false; // Réactiver les actions après expiration
+            } else {
+                minutes--;
+                seconds = 59;
+            }
+        } else {
+            seconds--;
+        }
+
+        // Mise à jour de l'affichage du timer
+        boostTimeLeft.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }, 1000);
+} // Fermeture de la fonction startBoost
+
+// Fonction pour afficher les notifications
+function showNotification(message, type) {
+    // Supprimer toutes les notifications avant d'afficher une nouvelle
+    notificationContainer.innerHTML = '';
+
+    const notification = document.createElement("div");
+    notification.textContent = message;
+    notification.classList.add("notification", type); // Ajout des classes 'notification' et du type
+    notificationContainer.appendChild(notification);
+
+    // Supprimer la notification après 3 secondes
+    setTimeout(() => notification.remove(), 3000);
+} // Fermeture de la fonction showNotification
+
+// Fonction pour copier l'adresse de paiement
+copyButton.addEventListener("click", function () {
+    const textArea = document.createElement("textarea");
+    textArea.value = walletAddress.textContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+    showNotification("✅ Address copied!", "success");
+}); // Fermeture de l'écouteur 'click' pour copier l'adresse
+        });
+</script>
+<script src="boostAvis.js"></script>
+        
+</body>
+</html>

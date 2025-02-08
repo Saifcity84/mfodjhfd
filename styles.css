@@ -1,0 +1,519 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Roboto:ital,wght@0,100..900;1,100..900&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+  font-family: "Montserrat", serif;
+  background-color: #121212;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  margin: 0;
+  padding: 10px;
+  font-size: 14px; /* Taille de base plus petite */
+}
+
+.container {
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  padding: 0px;
+  width: 100%;
+  max-width: 400px; /* Limite la largeur pour une meilleure compatibilité mobile */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;header {
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2em;
+  text-shadow: 0 0 10px #00ff884c;
+  color: #00ff88;
+  margin-bottom: 8px;
+  font-family: "Montserrat", serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  letter-spacing: 4px;
+}
+
+header p {
+  font-size: 12px;
+  color: #cccccc;
+  font-family: 'Arial', sans-serif;
+  margin-top: 0;
+  opacity: 0.8;
+}
+/* Style des boutons de pourcentage */
+.percentage-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  
+}
+.percentage-button {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background-color: #525252;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 24%;
+  text-align: center;
+}
+
+.percentage-button:hover {
+  background-color: #00cc66;
+  transform: scale(1.05);
+}
+
+/* Balance Section Styles */
+.balance-section {
+  text-align: center;
+margin: 0 30px;
+}
+
+.balance-section h2 {
+  font-size: 16px;
+  color: #00ff88;
+}
+
+.balance-card {
+  margin: 15px;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.balance-card:hover {
+  transform: translateY(-3px);}
+
+.balance-card p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.balance-card span {
+  font-size: 16px;
+  color: #00ff88;
+  font-weight: bold;
+}
+
+/* Add a smooth hover effect */
+.balance-card span:hover {
+  color: #00cc66;
+  cursor: pointer;
+}
+
+
+/* Clicker Section Styles */
+.clicker-section h2 {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  color: #00ff88;
+  margin-bottom: 10px;
+}
+
+.mine-button {
+
+  background-color: #00ff88;
+  color: #121212;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.mine-button:hover {
+  background-color: #00cc66;
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 255, 136, 0.5);
+}
+
+/* Market Section Styles */
+.market-section h2 {
+  font-size: 18px;
+  color: #00ff88;
+  margin-bottom: 10px;
+}
+
+.market-card {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  background-color: #2c2c2c;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.market-card p {
+  margin: 5px 0;
+  font-size: 20px;
+}
+
+.market-card button {
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.market-card button:hover {
+  transform: scale(1.05);
+}
+/* Market Section Styles */
+.market-section h2 {
+  font-size: 18px;
+  color: #00ff88;
+  margin-bottom: 10px;
+}
+
+.market-card {
+  background-color: #2c2c2c;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 5px;
+  text-align: center;
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.market-card p {
+  margin: 5px 0;
+  font-size: 20px;
+}
+
+.market-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espace entre les boutons */
+  margin-top: 10px;
+}
+
+.market-button {
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 100px; /* Largeur fixe des boutons */
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.buy {
+  background-color: #00ff88; /* Vert */
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  color: #ffffff;
+  text-shadow: 0 3px 4px #0000008e;
+  font-size: 1em;
+}
+
+.buy:hover {
+  background-color: #00cc66;
+  transform: scale(1.05);
+}
+
+.sell {
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  font-size: 1em;
+  background-color: #ff4444; /* Rouge */
+  text-shadow: 0 3px 4px #0000008e;
+
+  color: #ffffff;
+}
+
+.sell:hover {
+  background-color: #ff4444; /* Rouge */
+  transform: scale(1.05);
+}
+
+.market-button:active {
+  
+  transform: scale(0.98); /* Réduit légèrement la taille au clic */
+  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);
+}
+
+/* Notification Styles */
+#notificationContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.notification {
+  background-color: #4f4f4f;
+  color: #ffffff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;  min-width: 250px;
+  margin-bottom: 10px;
+}
+
+.notification.success {
+  border-left: 5px solid #00ff88;
+}
+
+.notification.error {
+  border-left: 5px solid #ff4444;
+}
+.notification.info {
+  border-left: 5px solid #ffffff;
+}
+
+.notification.fade-out {
+  animation: fadeOut 1s forwards;
+}
+/* Navbar futuriste */
+.navbar {
+  background: rgba(20, 20, 20, 0.95);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px 0; /* Réduit le padding vertical */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid rgba(0, 255, 136, 0.6);
+  box-shadow: 0px -4px 15px rgba(0, 255, 136, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-radius: 15px 15px 0 0;
+  height: 60px; /* Fixe une hauteur pour la navbar */
+}
+
+/* Structure des éléments de la navbar */
+.navbar ul {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  max-width: 450px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  align-items: center; /* Centrer les éléments verticalement */
+}
+
+/* Boutons de navigation */
+.navbar .nav-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  height: 100%; /* Assure que les icônes occupent toute la hauteur de la navbar */
+  justify-content: center; /* Centrer verticalement */
+}
+
+/* Icônes */
+.navbar .nav-link i {
+  font-size: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Effet glow sur les icônes au survol */
+.navbar .nav-link:hover i {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+  transform: translateY(-3px);
+}
+
+/* Texte sous les icônes */
+.navbar .nav-link span {
+  font-size: 10px;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+/* Icône centrale (bouton de trading) */
+.center-button {
+  position: relative;
+  top: -20px;
+}
+
+.trade-button {
+  background: linear-gradient(45deg, #00ff88, #0088ff);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+  transition: all 0.3s ease-in-out;
+  border: 3px solid #1a1a1a;
+}
+
+/* Effet de hover sur le bouton central */
+.trade-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
+}
+
+/* Icône à l'intérieur du bouton */
+.trade-button i {
+  color: white;
+  font-size: 22px;
+}
+
+/* Effet d'animation au chargement */
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.navbar {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Styles pour les boutons actifs */
+.mine-button:active, .market-card button:active {
+  transform: scale(0.98); /* Réduit légèrement la taille au clic */
+  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);
+}
+
+.connect-wallet-button {
+  background-color: #00ff88;
+  color: #121212;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 20px;
+  width: 100%;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.connect-wallet-button:hover {
+  background-color: #00cc66;
+  transform: scale(1);
+}
+
+#earnTokensButton {
+  background-size: cover; /* L'image couvre tout le bouton */
+  background-position: center; /* Centrer l'image */
+  width: 80px; /* Largeur réduite pour une mini app */
+  height: 80px; /* Hauteur réduite pour une mini app */
+  border-radius: 12px; /* Coins arrondis */
+  margin: 0 auto 10px; /* Centrer horizontalement et espacement en bas */
+  display: flex; /* Utilisation de Flexbox pour centrer l'image */
+  justify-content: center; /* Centrer l'image horizontalement */
+  align-items: center; /* Centrer l'image verticalement */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(87, 87, 87, 0.2); /* Ombre légère */
+  transition: transform 0.2s, box-shadow 0.2s; /* Effet au survol */
+  
+}
+
+#earnTokensButton:hover {
+  transform: scale(1.1); /* Agrandir légèrement au survol */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Ombre au survol */
+}
+
+#earnTokensButton:active {
+  transform: scale(0.95); /* Rétrécir légèrement au clic */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Réduction de l'ombre au clic */
+  outline: none;
+
+}
+
+
+
+/* Styles pour les boutons-image */
+.button-image {
+  border-radius: 8px; /* Coins arrondis */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.button-image:hover {
+  transform: scale(1.1); /* Agrandir légèrement au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre au survol */
+}
+
+.button-image:active {
+  transform: scale(0.95); /* Rétrécir légèrement au clic */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Réduction de l'ombre au clic */
+}
+
+/* Réactivité mobile */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  .balance-card, .market-card {
+    padding: 12px;
+  }
+
+  .mine-button{
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .button-image {
+    width: 40px;
+    height: 40px;
+  }
+}
+.select-style {
+  background-color: #2c2c2c;
+  color: #ffffff;
+  border: 1px solid #00ff88;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 16px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.select-style:focus {
+  outline: none;
+  border-color: #00cc66; /* Changer la bordure au focus */
+}
+}
