@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const boostAvisDiv = document.querySelector(".boostAvis");
-    const tokens = ["TRC20", "ERC20", "SOL", "BNB"];
+    const tokens = ["USDT", "BTC", "SOL", "BNB"];
     const avisElements = [];
 
     function generateRandomHex(length) {
@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let address = '';
 
         switch (tokenType) {
-            case "ERC20":
-                address = `0x${generateRandomHex(40)}`;
+            case "BTC":
+                address = generateRandomAlphanumeric(44);
                 break;
-            case "TRC20":
+            case "USDT":
                 address = `T${generateRandomAlphanumeric(33)}`;
                 break;
             case "SOL":
